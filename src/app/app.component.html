@@ -1,0 +1,95 @@
+
+<div class="container " >
+
+
+
+
+  <div class="row" style="background-color: #eae8e9 ;">
+
+    <div class="row pt-3 " >
+      <button class="col d-flex justify-content-evenly">Today's Menu</button>
+      <button class="col d-flex justify-content-evenly">Items</button>
+      <button class="col d-flex justify-content-evenly">Ads ons</button>
+      <button class="col d-flex justify-content-evenly">Timings </button>
+    </div>
+
+    <div class="row mt-3 mb-3  ">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search Food Items">
+        <span class="input-group-text"> <i class="bi bi-search"></i> </span>
+      </div>
+    </div>
+
+<!-- Todays menu component -->
+
+    <ng-template #showother>
+      <app-todays-menu [currentItem]=items></app-todays-menu>
+    </ng-template>
+
+
+    <!-- MIDDLE ROW -->
+  <div *ngIf="showMenu; else showother">
+    <div class="row" *ngFor="let data of foodData ; let i=index;">
+
+      <div class="row-12 ">
+
+        <div class="card">
+          <div class="card-body">
+
+            <div class="float-start pt-4" *ngIf="checked == false "
+              (click)="callFunctionInput($event, data.name, data.price, data.qty, data.desc)">
+              <input type="checkbox" name="" id="">
+            </div>
+            <p-toggleButton class="float-end pt-4" [(ngModel)]="data.toogle" (click)="callFunction($event, data.name)"
+              onIcon="bi bi-cart-check" offIcon="bi bi-cart-plus"></p-toggleButton>
+
+            <h5 class="card-title" style="margin-left: 3rem !important; font-weight: 600;">
+              <span *ngIf="data.veg == 'false' " class="red_dot"></span>
+              <span *ngIf="data.veg == 'true' " class="green_dot"></span>
+
+              {{data.name}}
+            </h5>
+
+            <p class="card-text" style="margin-left: 3rem !important; font-weight: 600;">Price: {{data.price}} |
+              Quantity: {{data.qty}} </p>
+            <p class="card-text"
+              style="margin-left: 3rem !important; border-bottom: 1px black solid; max-width:min-content;"> Description
+            </p>
+            <p class="card-text" style="margin-left: 3rem !important; max-width:16rem;"> {{data.desc}} </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    
+
+    <div class="sticky_div  d-flex justify-content-center mt-3" *ngIf="showDone">
+      <button (click)="show_today_menu()" pButton pRipple type="button" label="Done" class="p-button p-button-danger" style="padding:10px"></button>
+    </div>
+
+    <div class="row pb-2 fixed-bottom">
+      <div class="col d-flex justify-content-evenly">
+        <i class="bi bi-cart4"></i>
+        <p>Orders</p>
+      </div>
+      <div class="col d-flex justify-content-evenly">     
+           <i class="bi bi-menu-button-wide"></i>
+         <p>Inventory</p>
+
+      </div>
+
+      <div class="col d-flex justify-content-evenly">
+        <i class="bi bi-filter-square"></i>
+                <p>Reports</p>
+         </div>
+
+      <div class="col d-flex justify-content-evenly">
+        <i class="bi bi-share"></i>
+        <p>More </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

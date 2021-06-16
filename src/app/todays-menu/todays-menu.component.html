@@ -1,0 +1,24 @@
+<div class="col">
+  <div class="row">
+    <h3>Ordered Items</h3>
+  </div>
+
+  <div class="row mt-4" style="background-color: whitesmoke;">
+
+
+      <div class="card" *ngFor="let item of currentItem" let i=index; style="font-weight: 700;">
+        <div class="card-body">
+          <div class="card-text primary">
+                 <p>   {{i}}     {{item.name}}  </p>
+                 <p>                    Quantity: {{item.qty}} ml
+                    | Price: {{item.price}} /- </p>
+                    <p style="color:green">Order on its way
+                        <img src="https://img.icons8.com/fluent/28/000000/delivery-scooter.png"/>
+                    </p>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+</div>
